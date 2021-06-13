@@ -68,7 +68,7 @@ namespace Pfe
             lblError.Text = "";
             if (txtName.Text != "" && bytes.Length != 0 && txtPrice.Text !="" && cbCategory.SelectedIndex != -1 )
             {
-                string q = "select * from items where name like @nm";
+                string q = "select * from items where itemName like @nm";
                 SqlCommand cmde = new SqlCommand(q);
                 cmde.Parameters.AddWithValue("@nm", txtName.Text);
                 DataTable dt = Program.GetData(cmde);
