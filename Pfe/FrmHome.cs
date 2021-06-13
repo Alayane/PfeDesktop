@@ -52,7 +52,10 @@ namespace Pfe
             {
                 panelMenu.Visible = true;
             }
-            
+
+
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -73,6 +76,7 @@ namespace Pfe
             ucItem1.Hide();
             ucAdmin1.Hide();
             ucCategory1.Show();
+            ucCategory1.serch();
         }
 
         private void btnItems_Click(object sender, EventArgs e)
@@ -80,6 +84,8 @@ namespace Pfe
             ucAdmin1.Hide();
             ucCategory1.Hide();
             ucItem1.Show();
+            ucItem1.loadData();
+            
         }
     }
 }

@@ -32,7 +32,7 @@ namespace Pfe
         private void btnAddImage_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "jpg files(*.jpg) |*.jpg|png files(*.png)|*.png";
+            dialog.Filter = "Image files (*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 bytes = File.ReadAllBytes(dialog.FileName);
@@ -170,7 +170,7 @@ namespace Pfe
             }
         }
 
-        private void serch()
+        public void serch()
         {
             AutoCompleteStringCollection serch = new AutoCompleteStringCollection();
             string q = "select name from category order by name asc";

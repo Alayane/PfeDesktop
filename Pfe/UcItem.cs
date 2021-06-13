@@ -33,16 +33,7 @@ namespace Pfe
 
         private void UcItem_Load(object sender, EventArgs e)
         {
-            serch();
-            DataTable dt = new DataTable();
-            string query = "select categoryId,name from category";
-            SqlCommand cmd = new SqlCommand(query);
-            dt = Program.GetData(cmd);
-            cbCategory.DataSource = dt;
-            cbCategory.DisplayMember = "name";
-            cbCategory.ValueMember = "categoryId";
-            cbCategory.SelectedIndex = -1;
-
+            loadData();
 
             System.Windows.Forms.ToolTip ToolTip1 = new System.Windows.Forms.ToolTip();
             ToolTip1.SetToolTip(this.btnClear, "Clear all field");
@@ -51,11 +42,25 @@ namespace Pfe
             ToolTip1.SetToolTip(this.btnAddImage, "add or change image");
 
         }
+
+        public void loadData()
+        {
+            DataTable dt = new DataTable();
+            string query = "select categoryId,name from category";
+            SqlCommand cmd = new SqlCommand(query);
+            dt = Program.GetData(cmd);
+            cbCategory.DataSource = dt;
+            cbCategory.DisplayMember = "name";
+            cbCategory.ValueMember = "categoryId";
+            cbCategory.SelectedIndex = -1;
+            serch();
+        }
+
         byte[] bytes;
         private void btnAddImage_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "jpg files(*.jpg)|*.jpg";
+            dialog.Filter = "Image files(*.jpg, *.jpeg, *.jpe, *.jfif, *.png) | *.jpg; *.jpeg; *.jpe; *.jfif; *.png";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 bytes = File.ReadAllBytes(dialog.FileName);
